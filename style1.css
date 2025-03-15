@@ -1,0 +1,19 @@
+.text-red {
+    color: red;
+}
+
+.text-blue {
+    color: blue;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.border {
+    border: 1px solid black;
+}
+.center{
+    text-align: center;
+}
+
