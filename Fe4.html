@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn - Crypto Planet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .learn-hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .learn-hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .learn-hero p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .learn-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+    }
+    .learn-categories button {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .learn-categories button.active {
+      background: #111827;
+      color: white;
+    }
+
+    .learn-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .learn-item {
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .learn-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .learn-item .info {
+      padding: 16px;
+    }
+    .learn-item h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .learn-item p {
+      font-size: 14px;
+      color: #555;
+    }
+    .learn-item a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #111827;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .learn-detail {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 24px;
+      display: none;
+    }
+    .learn-detail h2 {
+      margin-top: 0;
+    }
+    .learn-detail img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <section class="learn-hero">
+    <h1>Khám phá thế giới Crypto</h1>
+    <p>Học về Bitcoin, Blockchain, DeFi và nhiều hơn nữa — bắt đầu từ cơ bản.</p>
+  </section>
+
+  <section class="learn-categories">
+    <button class="active" data-category="all">Tất cả</button>
+    <button data-category="basics">Crypto Basics</button>
+    <button data-category="blockchain">Blockchain</button>
+    <button data-category="defi">DeFi</button>
+    <button data-category="web3">Web3</button>
+    <button data-category="security">Security</button>
+  </section>
+
+  <section class="learn-content">
+    <div class="learn-item" data-category="basics">
+      <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=032" alt="Crypto Basics">
+      <div class="info">
+        <h3>Crypto là gì?</h3>
+        <p>Giải thích đơn giản về tiền điện tỬ.</p>
+        <a href="#" class="learn-more" data-article="crypto">Xem thêm</a>
+      </div>
+    </div>
+
+    <div class="learn-item" data-category="blockchain">
+      <img src="https://images2.thanhnien.vn/zoom/686_429/Uploaded/nthanhluan/2022_07_11/block-9148.jpg" alt="Blockchain">
+      <div class="info">
+        <h3>Cách hoạt động của blockchain</h3>
+        <p>Tìm hiểu cơ sở hạ tầng của công nghệ chuỗi khối.</p>
+        <a href="#" class="learn-more" data-article="blockchain">Xem thêm</a>
+      </div>
+    </div>
+
+    <div class="learn-item" data-category="defi">
+      <img src="https://cryptologos.cc/logos/polygon-matic-logo.png?v=032" alt="DeFi">
+      <div class="info">
+        <h3>DeFi là gì?</h3>
+        <p>Khám phá tài chính phi tập trung.</p>
+        <a href="#" class="learn-more" data-article="defi">Xem thêm</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="learn-detail" id="detail-box">
+    <h2 id="detail-title"></h2>
+    <img id="detail-img" src="" alt="">
+    <p id="detail-text"></p>
+  </section>
+  <section class="learn-content">
+    <!-- existing items -->
+
+    <div class="learn-item" data-category="web3">
+      <img src="https://cryptologos.cc/logos/filecoin-fil-logo.png?v=032" alt="Web3">
+      <div class="info">
+        <h3>Web3 là gì?</h3>
+        <p>Thế hệ tiếp theo của internet dựa trên blockchain.</p>
+        <a href="#" class="learn-more" data-article="web3">Xem thêm</a>
+      </div>
+    </div>
+
+    <div class="learn-item" data-category="security">
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Security">
+      <div class="info">
+        <h3>Bảo mật ví crypto</h3>
+        <p>Cách bảo vệ tài sản số khỏi lừa đảo và hack.</p>
+        <a href="#" class="learn-more" data-article="security">Xem thêm</a>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    const buttons = document.querySelectorAll('.learn-categories button');
+    const items = document.querySelectorAll('.learn-item');
+    const detailBox = document.getElementById('detail-box');
+    const detailTitle = document.getElementById('detail-title');
+    const detailImg = document.getElementById('detail-img');
+    const detailText = document.getElementById('detail-text');
+
+    const articleData = {
+      crypto: {
+        title: "Crypto là gì?",
+        img: "https://miro.medium.com/v2/resize:fit:1400/1*x3J9z2RSPKibQOmuYIHK_w.png",
+        text: "Tiền điện tỬ (cryptocurrency) là một dạng tiền tệ số được xây dựng trên công nghệ blockchain. Crypto cho phép giao dịch ngang hàng, minh bạch, không cần trung gian như ngân hàng."
+      },
+      blockchain: {
+        title: "Blockchain hoạt động ra sao?",
+        img: "https://101blockchains.com/wp-content/uploads/2020/11/what-is-blockchain-technology.png",
+        text: "Blockchain là một chuỗi các khối dữ liệu liên kết với nhau. Mỗi khối chứa dữ liệu và dấu vết của khối trước. Nó mang tính bất biến, minh bạch và bỏng tắc." 
+      },
+      defi: {
+        title: "DeFi là gì?",
+        img: "https://cryptologos.cc/logos/uniswap-uni-logo.png?v=032",
+        text: "DeFi (Decentralized Finance) là hệ sinh thái các ứng dụng tài chính trên blockchain. Không cần ngân hàng, bạn vẫn có thể gửi tiết kiệm, vốn hóa, và vày mượn qua smart contract."
+      }
+    };
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.dataset.category;
+        items.forEach(item => {
+          item.style.display = (category === 'all' || item.dataset.category === category) ? 'block' : 'none';
+        });
+        detailBox.style.display = 'none';
+      });
+    });
+
+    document.querySelectorAll('.learn-more').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const articleKey = link.dataset.article;
+        const data = articleData[articleKey];
+        detailTitle.textContent = data.title;
+        detailImg.src = data.img;
+        detailText.textContent = data.text;
+        detailBox.style.display = 'block';
+        window.scrollTo({ top: detailBox.offsetTop - 40, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

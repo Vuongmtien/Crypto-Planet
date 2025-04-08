@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Portfolio</title>
+  <link rel="stylesheet" href="./FE3_updated.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <h2>Crypto Planet</h2>
+    </div>
+
+    <nav class="navbar-center">
+      <a href="#">Market</a>
+      <a href="#">Watchlist ▼</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Learn</a>
+    </nav>
+
+    <div class="navbar-right">
+      <span>Eng</span>
+      <span>USD</span>
+      <button class="btn signin">Sign In</button>
+      <button class="btn register">Register</button>
+    </div>
+  </header>
+    <div class="grid-2x2">
+  <div class="card">
+    <h3>Tổng quan tài sản</h3>
+    <p>Tổng giá trị: <strong>$10,500</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>Danh sách coin/token</h3>
+    <table>
+      <tr>
+        <th>Coin</th>
+        <th>Số lượng</th>
+        <th>Giá trị</th>
+      </tr>
+      <tr>
+        <td>Bitcoin</td>
+        <td>0.5 BTC</td>
+        <td>$25,000</td>
+      </tr>
+      <tr>
+        <td>Ethereum</td>
+        <td>2 ETH</td>
+        <td>$7,000</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Hiệu suất đầu tư</h3>
+    <p>Lợi nhuận hôm nay: <strong class="positive">+2.5%</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>Lịch sử giao dịch</h3>
+    <div class="transaction">Mua 0.1 BTC - $5,000</div>
+    <div class="transaction">Bán 1 ETH - $3,500</div>
+    <div class="transaction">Mua 5 ADA - $100</div>
+  </div>
+</div>
+
+<div class="two-column">
+  <!-- Left: Market Table -->
+  <div class="market-section card scrollable-table">
+    <h3>📈 Thị trường</h3>
+    <table class="market-table">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th>Giá</th>
+          <th>Biến động 24h</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/cardano-ada-logo.png?v=032" class="icon"> ADA<br><small>Cardano</small></td>
+          <td>0.674 USD</td>
+          <td class="up">+0.52%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/avalanche-avax-logo.png?v=032" class="icon"> AVAX<br><small>Avalanche</small></td>
+          <td>19.32 USD</td>
+          <td class="down">-3.21%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/bnb-bnb-logo.png?v=032" class="icon"> BNB<br><small>Binance Coin</small></td>
+          <td>604.4 USD</td>
+          <td class="up">+0.07%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=032" class="icon"> BTC	<br><small>Bitcoin</small></td>
+          <td>604.4 USD</td>
+          <td class="up">+0.07%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=032" class="icon"> ETH<br><small>Ethereum</small></td>
+          <td>604.4 USD</td>
+          <td class="up">+0.07%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+        <tr>
+          <td><img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=032" class="icon"> SOL<br><small>Solana</small></td>
+          <td>604.4 USD</td>
+          <td class="up">+0.07%</td>
+          <td><a href="#">Giao dịch</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Right: Tabs - Gainers & News -->
+  <div class="card right-tab">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showTab('gainers')">🔥 Top Tăng/Giảm</button>
+      <button class="tab-btn" onclick="showTab('news')">📰 Tin tức</button>
+    </div>
+
+    <div id="gainers" class="tab-content active">
+      <h4>Top Tăng Giá</h4>
+      <ul>
+        <li>PEPE: +68%</li>
+        <li>FUN: +57%</li>
+        <li>DOGE: +22%</li>
+      </ul>
+      <h4>Top Giảm Giá</h4>
+      <ul>
+        <li>LUNC: -30%</li>
+        <li>SFP: -15%</li>
+        <li>MASK: -11%</li>
+      </ul>
+    </div>
+
+    <div id="news" class="tab-content">
+      <ul>
+        <li>Bitcoin vượt $90,000?</li>
+        <li>SEC sắp duyệt ETF ETH</li>
+        <li>ADA vượt $1 sau 2 năm</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="./market js fe3.js"></script>
+  
+<div class="two-column">
+  <div class="card square-wrapper">
+    <h3>👥 Square</h3>
+    <div class="square-scroll">
+      <!-- Nhân nhiều dòng như dưới để test cuộn -->
+      <div class="square-user">
+        <img src="https://image.viettimes.vn/w800/Uploaded/2025/uiqbzivo/2022_12_16/yi-he-1966.png" class="avatar">
+        <div class="info">
+          <strong>Yi He</strong>
+          <p>Co-Founder @Binance</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://images2.thanhnien.vn/zoom/686_429/528068263637045248/2023/12/21/1-17031506645421261111461-0-0-438-700-crop-1703150821642535342817.jpg" class="avatar">
+        <div class="info">
+          <strong>Changpeng Zhao (CZ)	</strong>
+          <p>Founder & Former CEO	</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://forbes.vn/wp-content/uploads/2021/11/Buterin.jpg" class="avatar">
+        <div class="info">
+          <strong>Vitalik Buterin</strong>
+          <p>Co-Founder Ethereum</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://cdn.coin68.com/images/20231113091929-66254dfa-0952-461a-b2e6-9da2668eea31-37.jpg" class="avatar">
+        <div class="info">
+          <strong>Brian Armstrong</strong>
+          <p>CEO Coinbase</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://tapchibitcoin.io/wp-content/uploads/2024/09/LTYZRJNEHJB2JPUAEFUBSTJUIY.jpg" class="avatar">
+        <div class="info">
+          <strong>Charles Hoskinson</strong>
+          <p>Founder Cardano</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://pbs.twimg.com/profile_images/981390758870683656/RxA_8cyN_400x400.jpg" class="avatar">
+        <div class="info">
+          <strong>Gavin Wood</strong>
+          <p>Co-Founder Ethereum, Founder @ Polkadot	</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://vcdn1-sohoa.vnecdn.net/2024/03/28/SBF-FTX-4571-1668515496-4017-1711617934.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=tztOOL44EyW7nPbmk0beqA" class="avatar">
+        <div class="info">
+          <strong>Sam Bankman-Fried (SBF)</strong>
+          <p>Co-Founder FTX</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://cdn.coin68.com/images/20231021023022-9b94454b-1536-4b4f-ab01-dcb2958e080e-18.jpg" class="avatar">
+        <div class="info">
+          <strong>Hayden Adams</strong>
+          <p>Founder	Uniswap</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://tapchibitcoin.io/wp-content/uploads/2021/06/JessePowell.jpg" class="avatar">
+        <div class="info">
+          <strong>Jesse Powell</strong>
+          <p>Co-Founder	Kraken</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <div class="square-user">
+        <img src="https://images2.thanhnien.vn/528068263637045248/2025/1/3/2025-01-02t160010z2087238411rc2qr6a2cylqrtrmadp3fintech-crypto-do-kwon-17358777125391052791261.jpg" alt="Do Kwon" class="avatar" loading="lazy">
+        <div class="info">
+          <strong>Do Kwon</strong>
+          <p>Founder	Terra (LUNA)</p>
+        </div>
+        <button>Theo dõi</button>
+      </div>
+      <!-- thêm nhiều user ở đây -->
+    </div>
+  </div>
+
+  <div class="card right-box">
+    <h3>🔔 Thông báo</h3>
+    <ul>
+      <li><strong>Binance nâng cấp EGLD</strong><br>5/3/2025</li>
+      <li>Funding Rate RCAUSDT khôi phục<br>24/3/2025</li>
+      <li><span class="up">BTC/USDT +94%</span></li>
+    </ul>
+  </div>
+</div>
+
+
+
+  
+  </body>
+  
+</html>
