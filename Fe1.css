@@ -1699,3 +1699,51 @@ input[type="text"] {
 .option img:hover {
   cursor: pointer;
 }
+#user-email {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.4s ease;
+    font-weight: bold;
+    color: #10b981; /* Xanh mint */
+  }
+  
+  #user-email.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #user-email:hover {
+    color: #2563eb;     /* Xanh dương */
+    cursor: pointer;    /* Bàn tay */
+    text-decoration: underline; /* (Tuỳ thích) gạch chân khi hover */
+  }
+  .price-change-up {
+    background-color: #16a34a;
+    color: white;
+    transition: 0.3s;
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+  
+  .price-change-down {
+    background-color: #dc2626;
+    color: white;
+    transition: 0.3s;
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+  .price-up {
+    animation: blinkGreen 0.8s ease;
+  }
+  .price-down {
+    animation: blinkRed 0.8s ease;
+  }
+  
+  @keyframes blinkGreen {
+    0% { background-color: #d4f9d4; }
+    100% { background-color: transparent; }
+  }
+  @keyframes blinkRed {
+    0% { background-color: #ffd6d6; }
+    100% { background-color: transparent; }
+  }
+      

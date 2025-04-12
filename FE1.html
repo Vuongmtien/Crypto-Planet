@@ -10,6 +10,7 @@
 
 </head>
 <body>
+    
     <div class="menu" >
         <div><a href="#">Crypto Planet</a></div>
         <div class="menu-left">
@@ -40,7 +41,11 @@
             </ul>
         </div>
         <div class="menu-right">
+            <li><button id="logout-btn" style="display: none;">Đăng xuất</button></li>
+
             <ul>
+                <li><span id="user-email"></span></li>
+                <li id="login-info"></li>
                 <li><a href="#">Eng</a></li>
                 <li><a href="#">USD</a></li>
                 <li><button class="open-popup" data-popup="sign-in-popup">Sign In</button></li>
@@ -52,9 +57,9 @@
                 <span class="popup-close" onclick="closePopup('sign-in-popup')">&times;</span>
                 <img src="https://s3.coinmarketcap.com/static-gravity/image/5e3adfa4e591465f92355f7bd474e8ad.png" alt="Crypto Planet Logo" class="popup-logo">
                 <h2>Sign In</h2>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button class="popup-btn">Login</button>
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                <button class="popup-btn" onclick="handleLogin()">Login</button>
                 <p>Don't have an account? <a href="#" onclick="switchPopup('sign-in-popup', 'sign-up-popup')">Sign Up</a></p>
                 <div class="social-login">
                     <p class="separator"><img src="https://s3.coinmarketcap.com/static-gravity/image/5e3adfa4e591465f92355f7bd474e8ad.png" alt="Crypto Planet Logo" class="small-logo"></p>
@@ -70,10 +75,10 @@
                 <span class="popup-close" onclick="closePopup('sign-up-popup')">&times;</span>
                 <img src="https://s3.coinmarketcap.com/static-gravity/image/5e3adfa4e591465f92355f7bd474e8ad.png" alt="Crypto Planet Logo" class="popup-logo">
                 <h2>Register</h2>
-                <input type="text" placeholder="Username">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button class="popup-btn">Sign Up</button>
+                <input type="text" id="signup-username" placeholder="Username">
+                <input type="email" id="signup-email" placeholder="Email">
+                <input type="password" id="signup-password" placeholder="Password">
+                <button class="popup-btn" onclick="handleSignup()">Sign Up</button>
                 <p>Already have an account? <a href="#" onclick="switchPopup('sign-up-popup', 'sign-in-popup')">Sign In</a></p>
                 <div class="social-login">
                     <button class="social-btn google"><img src="data:image/jpeg;base64,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" alt="Google Logo"> Sign up with Google</button>
@@ -128,47 +133,54 @@
         <p class="market-subtitle">Top Market</p>
         <h3 class="market-title">Get Various Crypto Coin</h3>
         <div class="crypto-container">
-            <div class="crypto-card">
-                <div class="crypto-header">
-                    <img src="https://media.istockphoto.com/id/951412868/vi/anh/bitcoin-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=PpCwlhFrMyBj4wi_IfqjtEP1kRBeuN1AxVtOll2Oolk=" alt="Bitcoin">
-                    <span>Bitcoin</span>
-                    <span class="crypto-tag">BTC</span>
-                </div>
-                <p class="crypto-price">$38,447.54 <span class="crypto-change positive">+2%</span></p>
-                <div class="crypto-chart"></div>
+      
+          <!-- Bitcoin -->
+          <div class="crypto-card">
+            <div class="crypto-header">
+              <img src="https://media.istockphoto.com/id/951412868/vi/anh/bitcoin-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng.jpg?s=612x612&w=0&k=20&c=PpCwlhFrMyBj4wi_IfqjtEP1kRBeuN1AxVtOll2Oolk=" alt="Bitcoin">
+              <span>Bitcoin</span>
+              <span class="crypto-tag">BTC</span>
             </div>
-            
-            <div class="crypto-card">
-                <div class="crypto-header">
-                    <img src="https://png.pngtree.com/png-clipart/20230822/original/pngtree-binance-coin-cryptocurrency-blockchain-icon-picture-image_8182760.png" alt="Binance">
-                    <span>Binance</span>
-                    <span class="crypto-tag">BNB</span>
-                </div>
-                <p class="crypto-price">$38,447.54 <span class="crypto-change positive">+2%</span></p>
-                <div class="crypto-chart"></div>
+            <p class="crypto-price" id="price-btc">$38,447.54 <span class="crypto-change positive">+2%</span></p>
+            <div class="crypto-chart"></div>
+          </div>
+      
+          <!-- Binance -->
+          <div class="crypto-card">
+            <div class="crypto-header">
+              <img src="https://png.pngtree.com/png-clipart/20230822/original/pngtree-binance-coin-cryptocurrency-blockchain-icon-picture-image_8182760.png" alt="Binance">
+              <span>Binance</span>
+              <span class="crypto-tag">BNB</span>
             </div>
-    
-            <div class="crypto-card">
-                <div class="crypto-header">
-                    <img src="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-6278326_1280.png" alt="Ethereum">
-                    <span>Ethereum</span>
-                    <span class="crypto-tag">ETH</span>
-                </div>
-                <p class="crypto-price">$38,447.54 <span class="crypto-change negative">-2%</span></p>
-                <div class="crypto-chart red-chart"></div>
+            <p class="crypto-price" id="price-bnb">$38,447.54 <span class="crypto-change positive">+2%</span></p>
+            <div class="crypto-chart"></div>
+          </div>
+      
+          <!-- Ethereum -->
+          <div class="crypto-card">
+            <div class="crypto-header">
+              <img src="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-6278326_1280.png" alt="Ethereum">
+              <span>Ethereum</span>
+              <span class="crypto-tag">ETH</span>
             </div>
-    
-            <div class="crypto-card">
-                <div class="crypto-header">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqZaDIeNPM6pPVeeWS2ocxKvx1x2Xxbklp-Q&s" alt="XRP">
-                    <span>XRP</span>
-                    <span class="crypto-tag">XRP</span>
-                </div>
-                <p class="crypto-price">$38,447.54 <span class="crypto-change positive">+2%</span></p>
-                <div class="crypto-chart"></div>
+            <p class="crypto-price" id="price-eth">$38,447.54 <span class="crypto-change negative">-2%</span></p>
+            <div class="crypto-chart red-chart"></div>
+          </div>
+      
+          <!-- XRP -->
+          <div class="crypto-card">
+            <div class="crypto-header">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqZaDIeNPM6pPVeeWS2ocxKvx1x2Xxbklp-Q&s" alt="XRP">
+              <span>XRP</span>
+              <span class="crypto-tag">XRP</span>
             </div>
+            <p class="crypto-price" id="price-xrp">$38,447.54 <span class="crypto-change positive">+2%</span></p>
+            <div class="crypto-chart"></div>
+          </div>
+      
         </div>
-    </section>
+      </section>
+      
 
     <section class="easy-start">
         <div class="container">
@@ -425,7 +437,7 @@
         });
         </script>
         
-        
+        <script src="./JS1.js"></script>
     
  
 </body>

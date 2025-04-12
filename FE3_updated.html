@@ -27,10 +27,12 @@
     </div>
   </header>
     <div class="grid-2x2">
-  <div class="card">
-    <h3>Tổng quan tài sản</h3>
-    <p>Tổng giá trị: <strong>$10,500</strong></p>
-  </div>
+      <div class="card">
+        <h3>Tổng quan tài sản</h3>
+        <p>Tổng giá trị: <strong id="total-balance">$0</strong></p>
+        <p>Email: <span id="account-email">Chưa đăng nhập</span></p>
+      </div>
+      
 
   <div class="card">
     <h3>Danh sách coin/token</h3>
@@ -81,39 +83,39 @@
       </thead>
       <tbody>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/cardano-ada-logo.png?v=032" class="icon"> ADA<br><small>Cardano</small></td>
-          <td>0.674 USD</td>
-          <td class="up">+0.52%</td>
+          <td><img src="https://cryptocompare.com/media/37746235/ada.png" class="icon"> ADA<br><small>Cardano</small></td>
+          <td id="price-ada">0.674 USD</td>
+          <td id="change-ada" class="up">+0.52%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/avalanche-avax-logo.png?v=032" class="icon"> AVAX<br><small>Avalanche</small></td>
-          <td>19.32 USD</td>
-          <td class="down">-3.21%</td>
+          <td><img src="https://cdn.vectorstock.com/i/1000v/48/12/avalanche-avax-coin-icon-isolated-on-white-vector-39474812.jpg" class="icon"> AVAX<br><small>Avalanche</small></td>
+          <td id="price-avax">19.32 USD</td>
+          <td id="change-avax" class="down">-3.21%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/bnb-bnb-logo.png?v=032" class="icon"> BNB<br><small>Binance Coin</small></td>
-          <td>604.4 USD</td>
-          <td class="up">+0.07%</td>
+          <td><img src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png" class="icon"> BNB<br><small>Binance Coin</small></td>
+          <td id="price-bnb">604.4 USD</td>
+          <td id="change-bnb" class="up">+0.07%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=032" class="icon"> BTC	<br><small>Bitcoin</small></td>
-          <td>604.4 USD</td>
-          <td class="up">+0.07%</td>
+          <td><img src="https://cryptocompare.com/media/37746251/btc.png" class="icon"> BTC	<br><small>Bitcoin</small></td>
+          <td id="price-btc">604.4 USD</td>
+          <td id="change-btc" class="up">+0.07%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=032" class="icon"> ETH<br><small>Ethereum</small></td>
-          <td>604.4 USD</td>
-          <td class="up">+0.07%</td>
+          <td><img src="https://cryptocompare.com/media/37746238/eth.png" class="icon"> ETH<br><small>Ethereum</small></td>
+          <td id="price-eth">604.4 USD</td>
+          <td id="change-eth" class="up">+0.07%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=032" class="icon"> SOL<br><small>Solana</small></td>
-          <td>604.4 USD</td>
-          <td class="up">+0.07%</td>
+          <td><img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="icon"> SOL<br><small>Solana</small></td>
+          <td id="price-sol">604.4 USD</td>
+          <td id="change-sol" class="up">+0.07%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
       </tbody>
@@ -253,7 +255,7 @@
   </div>
 </div>
 
-
+<script src="./JS3.js"></script>
 
   
   </body>
