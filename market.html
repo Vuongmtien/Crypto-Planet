@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="market.css" />
+</head>
+<body>
+    <!-- <div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="market.html" class="active">Market</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input" />
+                <button class="search-button">🔍</button>
+        </nav>
+    </div> -->
+    <!-- Crypto Categories Section -->
+<section class="crypto-categories">
+    <div class="container">
+        <div class="category-cards">
+            <!-- Hot Coins -->
+            <div class="category-card">
+                <div class="card-header">
+                    <h3>Hot Coins</h3>
+                    <a href="#" class="more-link">More ›</a>
+                </div>
+                <div class="card-content">
+                    <!-- BNB -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="coin-icon">
+                            <span class="coin-symbol">BNB</span>
+                        </div>
+                        <div class="coin-price">$595.80</div>
+                        <div class="coin-change positive">+1.84%</div>
+                    </div>
+                    
+                    <!-- BTC -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="coin-icon">
+                            <span class="coin-symbol">BTC</span>
+                        </div>
+                        <div class="coin-price">$85.55K</div>
+                        <div class="coin-change positive">+2.97%</div>
+                    </div>
+                    
+                    <!-- ETH -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" class="coin-icon">
+                            <span class="coin-symbol">ETH</span>
+                        </div>
+                        <div class="coin-price">$1.62K</div>
+                        <div class="coin-change positive">+4.44%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Listing -->
+            <div class="category-card">
+                <div class="card-header">
+                    <h3>New Listing</h3>
+                    <a href="#" class="more-link">More ›</a>
+                </div>
+                <div class="card-content">
+                    <!-- BIGTIME -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/27958.png" alt="BIGTIME" class="coin-icon">
+                            <span class="coin-symbol">BIGTIME</span>
+                        </div>
+                        <div class="coin-price">$0.06945</div>
+                        <div class="coin-change positive">+1.27%</div>
+                    </div>
+                    
+                    <!-- ONDO -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/25348.png" alt="ONDO" class="coin-icon">
+                            <span class="coin-symbol">ONDO</span>
+                        </div>
+                        <div class="coin-price">$0.9079</div>
+                        <div class="coin-change positive">+3.17%</div>
+                    </div>
+                    
+                    <!-- VIRTUAL -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/28015.png" alt="VIRTUAL" class="coin-icon">
+                            <span class="coin-symbol">VIRTUAL</span>
+                        </div>
+                        <div class="coin-price">$0.5926</div>
+                        <div class="coin-change positive">+9.17%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top Gainer Coin -->
+            <div class="category-card">
+                <div class="card-header">
+                    <h3>Top Gainer Coin</h3>
+                    <a href="#" class="more-link">More ›</a>
+                </div>
+                <div class="card-content">
+                    <!-- ARK -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/ark-ark-logo.png" alt="ARK" class="coin-icon">
+                            <span class="coin-symbol">ARK</span>
+                        </div>
+                        <div class="coin-price">$0.4741</div>
+                        <div class="coin-change positive">+24.60%</div>
+                    </div>
+                    
+                    <!-- API3 -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/7737.png" alt="API3" class="coin-icon">
+                            <span class="coin-symbol">API3</span>
+                        </div>
+                        <div class="coin-price">$0.887</div>
+                        <div class="coin-change positive">+23.54%</div>
+                    </div>
+                    
+                    <!-- 1000CAT -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/29092.png" alt="1000CAT" class="coin-icon">
+                            <span class="coin-symbol">1000CAT</span>
+                        </div>
+                        <div class="coin-price">$0.00584</div>
+                        <div class="coin-change positive">+20.41%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top Volume Coin -->
+            <div class="category-card">
+                <div class="card-header">
+                    <h3>Top Volume Coin</h3>
+                    <a href="#" class="more-link">More ›</a>
+                </div>
+                <div class="card-content">
+                    <!-- BTC -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="coin-icon">
+                            <span class="coin-symbol">BTC</span>
+                        </div>
+                        <div class="coin-price">$85.55K</div>
+                        <div class="coin-change positive">+2.97%</div>
+                    </div>
+                    
+                    <!-- ETH -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" class="coin-icon">
+                            <span class="coin-symbol">ETH</span>
+                        </div>
+                        <div class="coin-price">$1.62K</div>
+                        <div class="coin-change positive">+4.44%</div>
+                    </div>
+                    
+                    <!-- SOL -->
+                    <div class="coin-item">
+                        <div class="coin-info">
+                            <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL" class="coin-icon">
+                            <span class="coin-symbol">SOL</span>
+                        </div>
+                        <div class="coin-price">$131.89</div>
+                        <div class="coin-change positive">+9.55%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Market Table Section -->
+<section class="market-section">
+    <div class="container">
+        <h2 class="section-title">Cryptocurrency Market</h2>
+        <div class="crypto-table-container">
+            <div class="table-controls">
+                <div class="search-box">
+                    <input type="text" placeholder="Search" id="crypto-search">
+                    <i class="search-icon"></i>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="gainers">Top Gainers</button>
+                    <button class="filter-btn" data-filter="losers">Top Losers</button>
+                </div>
+            </div>
+            
+            <div class="scrollable-table">
+                <table class="market-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="name">Name <i class="sort-icon">⬇</i></th>
+                            <th class="sortable" data-sort="price">Price <i class="sort-icon">⬇</i></th>
+                            <th class="sortable" data-sort="change">Change <i class="sort-icon">⬇</i></th>
+                            <th class="sortable" data-sort="volume">24h Volume <i class="sort-icon">⬇</i></th>
+                            <th class="sortable" data-sort="market-cap">Market Cap <i class="sort-icon">⬇</i></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crypto-table-body">
+                        <!-- BTC -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://bin.bnbstatic.com/static/assets/logos/XRP.png" alt="Bitcoin logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">BTC</span>
+                                        <small class="coin-fullname">Bitcoin</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$85,511.45</td>
+                            <td class="change-cell"><span class="percent-up">+2.87%</span></td>
+                            <td>$27.26B</td>
+                            <td>$1,693.41B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- ETH -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="" alt="Ethereum logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">ETH</span>
+                                        <small class="coin-fullname">Ethereum</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$1,626.71</td>
+                            <td class="change-cell"><span class="percent-up">+4.54%</span></td>
+                            <td>$13.37B</td>
+                            <td>$195.88B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- USDT -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">USDT</span>
+                                        <small class="coin-fullname">TetherUS</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$0.99989999</td>
+                            <td class="change-cell"><span class="percent-up">+0.00%</span></td>
+                            <td>$57.08B</td>
+                            <td>$144.34B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- XRP -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">XRP</span>
+                                        <small class="coin-fullname">XRP</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$2.15</td>
+                            <td class="change-cell"><span class="percent-up">+6.73%</span></td>
+                            <td>$3.61B</td>
+                            <td>$125.45B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- BNB -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">BNB</span>
+                                        <small class="coin-fullname">BNB</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$595.82</td>
+                            <td class="change-cell"><span class="percent-up">+1.79%</span></td>
+                            <td>$1.31B</td>
+                            <td>$84.70B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- SOL -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">SOL</span>
+                                        <small class="coin-fullname">Solana</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$132.49</td>
+                            <td class="change-cell"><span class="percent-up">+10.18%</span></td>
+                            <td>$4.28B</td>
+                            <td>$68.38B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- USDC -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">USDC</span>
+                                        <small class="coin-fullname">USDC</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$1.00</td>
+                            <td class="change-cell"><span class="percent-down">-0.02%</span></td>
+                            <td>$8.05B</td>
+                            <td>$60.07B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- TRX -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRON logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">TRX</span>
+                                        <small class="coin-fullname">TRON</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$0.2475</td>
+                            <td class="change-cell"><span class="percent-up">+1.64%</span></td>
+                            <td>$511.49M</td>
+                            <td>$24.75B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- DOGE -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">DOGE</span>
+                                        <small class="coin-fullname">Dogecoin</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$0.16641</td>
+                            <td class="change-cell"><span class="percent-up">+4.86%</span></td>
+                            <td>$909.30M</td>
+                            <td>$24.71B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- ADA -->
+                        <tr>
+                            <td>
+                                <div class="crypto-name">
+                                    <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano logo" class="crypto-icon">
+                                    <div>
+                                        <span class="coin-name">ADA</span>
+                                        <small class="coin-fullname">Cardano</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price-cell">$0.6494</td>
+                            <td class="change-cell"><span class="percent-up">+4.47%</span></td>
+                            <td>$703.54M</td>
+                            <td>$22.88B</td>
+                            <td class="actions-cell">
+                                <button class="action-btn buy-btn">Buy</button>
+                                <button class="action-btn star-btn">⭐</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination">
+                <button class="page-btn" disabled>Previous</button>
+                <span class="page-indicator">Page 1 of 1</span>
+                <button class="page-btn" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+</section>
+    <script src="market.js"></script>
+</body>
+</html>

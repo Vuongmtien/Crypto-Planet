@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -62,6 +63,8 @@ body {
 
 
 
+=======
+>>>>>>> eb3f2e6b45200330eb467d9aa9a3b775ed9dbcaf
 /* Crypto Market Table Styles */
 .market-section {
     background: #fff;
@@ -478,6 +481,7 @@ body {
     .category-card {
       width: 100%;
     }
+<<<<<<< HEAD
   }
   .price-up {
     animation: blinkGreen 0.8s ease;
@@ -633,3 +637,6 @@ body {
   z-index: 999;
   justify-content: space-between;
 }
+=======
+  }
+>>>>>>> eb3f2e6b45200330eb467d9aa9a3b775ed9dbcaf
