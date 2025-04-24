@@ -15,33 +15,34 @@
         <div><a href="#">Crypto Planet</a></div>
         <div class="menu-left">
             <ul>
-                <li><a href="#">Market</a> </li>
+                <li><a href="./market_updated_ids.html">Market</a> </li>
                 
-                <div class="dropdown">
-                    <button class="watchlist-btn">Watchlist ▼</button>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-column">
-                            <h4>Cơ bản</h4>
-                            <a href="#">Spot</a>
-                            <a href="#">Margin</a>
-                            <a href="#">P2P</a>
-                            <a href="#">Chuyển đổi & Giao dịch lô</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <h4>Nâng cao</h4>
-                            <a href="#">Bot giao dịch</a>
-                            <a href="#">Sao chép giao dịch</a>
-                            <a href="#">API</a>
-                        </div>
+                <div class="dropdown" id="watchlistDropdown">
+                    <a href="./spot.html" class="watchlist-btn" id="watchlistToggle">Watchlist ▼</a>
+                    <div class="dropdown-menu" id="watchlistMenu">
+                      <div class="dropdown-column">
+                        <h4>Cơ bản</h4>
+                        <a href="#">Spot</a>
+                        <a href="#">Margin</a>
+                        <a href="#">P2P</a>
+                        <a href="#">Chuyển đổi & Giao dịch lô</a>
+                      </div>
+                      <div class="dropdown-column">
+                        <h4>Nâng cao</h4>
+                        <a href="#">Bot giao dịch</a>
+                        <a href="#">Sao chép giao dịch</a>
+                        <a href="#">API</a>
+                      </div>
                     </div>
-                </div>
+                  </div>
+                  
                          
                 <li><a href="./FE3_updated.html">Portfolio</a></li>
                 <li><a href="./Fe4.html">Learn</a></li>
             </ul>
         </div>
         <div class="menu-right">
-            <li><button id="logout-btn" style="display: none;">Đăng xuất</button></li>
+            <button id="logout-btn" style="display: none;">Đăng xuất</button>
 
             <ul>
                 <li><span id="user-email"></span></li>

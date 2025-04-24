@@ -1,69 +1,102 @@
-function updatePortfolioOverview() {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    if (user) {
-      document.getElementById("account-email").innerText = user.email;
-  
-      // Tổng tài sản demo
-      const total = 25000 + 7000;
-      document.getElementById("total-balance").innerText = `$${total.toLocaleString()}`;
+async function fetchMarketData() {
+  const coinGeckoIDs = [
+    "bitcoin", "ethereum", "binancecoin", "solana",
+    "cardano", "dogecoin", "ripple", "tron",
+    "tether", "usd-coin", "avalanche-2"
+  ];
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinGeckoIDs.join(",")}`;
+  const res = await fetch(url);
+  return await res.json();
+}
+
+function updateCoinCard(coinId, price, change, image) {
+  const priceEl = document.getElementById(`price-${coinId}`);
+  const changeEl = document.getElementById(`change-${coinId}`) || document.getElementById(`percent-${coinId}`);
+  const imgEl = document.getElementById(`img-${coinId}`);
+
+  if (priceEl && !isNaN(price)) {
+    const oldPrice = parseFloat(priceEl.getAttribute("data-value")) || 0;
+    const formatted = `${price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD`;
+    priceEl.textContent = formatted;
+    priceEl.setAttribute("data-value", price);
+
+    // So sánh và nháy màu
+    if (oldPrice && oldPrice !== price) {
+      const flashClass = price > oldPrice ? "price-up" : "price-down";
+      priceEl.classList.add(flashClass);
+      setTimeout(() => priceEl.classList.remove(flashClass), 600);
     }
   }
+
+  if (changeEl && !isNaN(change)) {
+    const fixed = change.toFixed(2);
+    changeEl.textContent = `${change >= 0 ? "+" : ""}${fixed}%`;
   
-  document.addEventListener("DOMContentLoaded", updatePortfolioOverview);
-  function updateTablePrice(id, newPrice) {
-    const el = document.getElementById(id);
-    if (!el) return;
+    // Xoá class cũ trước khi thêm mới
+    changeEl.classList.remove("percent-up", "percent-down", "price-flash");
   
-    const currentPrice = parseFloat(el.textContent.replace(/[^\d.]/g, ''));
-    if (isNaN(currentPrice) || currentPrice === newPrice) return;
+    // Thêm class màu + hiệu ứng nhấp nháy
+    const className = change >= 0 ? "percent-up" : "percent-down";
+    changeEl.classList.add(className, "price-flash");
   
-    const className = newPrice > currentPrice ? "price-up" : "price-down";
-  
-    el.classList.add(className);
-    el.textContent = `${newPrice.toFixed(2)} USD`;
-  
-    setTimeout(() => {
-      el.classList.remove("price-up", "price-down");
-    }, 1000);
+    // Xoá hiệu ứng sau 0.6s
+    setTimeout(() => changeEl.classList.remove("price-flash"), 600);
   }
- 
-    setInterval(() => {
-        updateTablePrice("price-ada", getRandomPrice(0.6, 0.8));
-        updateChangePercent("change-ada");
-      
-        updateTablePrice("price-avax", getRandomPrice(18, 22));
-        updateChangePercent("change-avax");
-      
-        updateTablePrice("price-bnb", getRandomPrice(580, 620));
-        updateChangePercent("change-bnb");
-      
-        updateTablePrice("price-btc", getRandomPrice(600, 650));
-        updateChangePercent("change-btc");
-      
-        updateTablePrice("price-eth", getRandomPrice(1800, 2000));
-        updateChangePercent("change-eth");
-      
-        updateTablePrice("price-sol", getRandomPrice(20, 30));
-        updateChangePercent("change-sol");
-      }, 4000);
-      
   
-  function getRandomPrice(min, max) {
-    return Math.random() * (max - min) + min;
+
+  if (imgEl && image) {
+    imgEl.src = image;
+    imgEl.alt = coinId;
   }
-  function updateChangePercent(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-  
-    const isUp = Math.random() > 0.4;
-    const percent = (Math.random() * 5).toFixed(2); // VD: 0.87%
-  
-    el.textContent = `${isUp ? "+" : "-"}${percent}%`;
-  
-    el.classList.add(isUp ? "percent-up" : "percent-down");
-  
-    setTimeout(() => {
-      el.classList.remove("percent-up", "percent-down");
-    }, 1000);
+}
+
+
+async function updateJS3Prices() {
+  try {
+    const data = await fetchMarketData();
+    data.forEach(coin => {
+      updateCoinCard(
+        coin.id,
+        coin.current_price,
+        coin.price_change_percentage_24h,
+        coin.image
+      );
+    });
+  } catch (error) {
+    console.error("❌ Lỗi gọi API CoinGecko:", error);
   }
-        
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateJS3Prices();
+  setInterval(updateJS3Prices, 3000); // cập nhật mỗi 3 giây
+});
+const email = localStorage.getItem('userEmail');
+if (email) {
+  document.getElementById('account-email').textContent = email;
+}
+const toggleBtn = document.getElementById('watchlistToggle');
+const menu = document.getElementById('watchlistMenu');
+const dropdown = document.getElementById("watchlistDropdown");
+
+ // Ngăn chuyển trang khi click (chỉ mở menu)
+ toggleBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  menu.classList.toggle("show");
+});
+
+// Đóng menu khi click ra ngoài
+document.addEventListener("click", function (e) {
+  if (!dropdown.contains(e.target)) {
+    menu.classList.remove("show");
+  }
+});
+
+
+// Bấm ra ngoài thì đóng
+document.addEventListener('click', (e) => {
+  if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+    menu.classList.remove('show');
+  }
+});
+

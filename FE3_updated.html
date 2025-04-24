@@ -6,19 +6,38 @@
   <link rel="stylesheet" href="./FE3_updated.css">
 </head>
 <body>
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-left">
-      <h2>Crypto Planet</h2>
+      <h2><a href="./FE1.html" style="text-decoration: none; color: rgb(18, 17, 17);">Crypto Planet</a></h2>
     </div>
-
+  
     <nav class="navbar-center">
-      <a href="#">Market</a>
-      <a href="#">Watchlist ▼</a>
-      <a href="#">Portfolio</a>
-      <a href="#">Learn</a>
+      <a href="./market_updated_ids.html">Market</a>
+  
+      <div class="dropdown" id="watchlistDropdown">
+        <a href="./spot.html" class="watchlist-btn" id="watchlistToggle">Watchlist ▼</a>
+        <div class="dropdown-menu" id="watchlistMenu">
+          <div class="dropdown-column">
+            <h4>Cơ bản</h4>
+            <a href="#">Spot</a>
+            <a href="#">Margin</a>
+            <a href="#">P2P</a>
+            <a href="#">Chuyển đổi & Giao dịch lô</a>
+          </div>
+          <div class="dropdown-column">
+            <h4>Nâng cao</h4>
+            <a href="#">Bot giao dịch</a>
+            <a href="#">Sao chép giao dịch</a>
+            <a href="#">API</a>
+          </div>
+        </div>
+      </div>
+      
+  
+      <a href="./FE3_updated.html">Portfolio</a>
+      <a href="./Fe4.html">Learn</a>
     </nav>
-
+  
     <div class="navbar-right">
       <span>Eng</span>
       <span>USD</span>
@@ -26,6 +45,7 @@
       <button class="btn register">Register</button>
     </div>
   </header>
+  
     <div class="grid-2x2">
       <div class="card">
         <h3>Tổng quan tài sản</h3>
@@ -83,42 +103,60 @@
       </thead>
       <tbody>
         <tr>
-          <td><img src="https://cryptocompare.com/media/37746235/ada.png" class="icon"> ADA<br><small>Cardano</small></td>
-          <td id="price-ada">0.674 USD</td>
-          <td id="change-ada" class="up">+0.52%</td>
+          <td>
+            <img id="img-cardano" class="icon" />
+            ADA<br><small>Cardano</small>
+          </td>
+          <td id="price-cardano" data-value="0">0.00 USD</td>
+          <td id="percent-cardano" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cdn.vectorstock.com/i/1000v/48/12/avalanche-avax-coin-icon-isolated-on-white-vector-39474812.jpg" class="icon"> AVAX<br><small>Avalanche</small></td>
-          <td id="price-avax">19.32 USD</td>
-          <td id="change-avax" class="down">-3.21%</td>
+          <td>
+            <img id="img-avalanche-2" class="icon" />
+            AVAX<br><small>Avalanche</small>
+          </td>
+          <td id="price-avalanche-2" data-value="0">0.00 USD</td>
+          <td id="percent-avalanche-2" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png" class="icon"> BNB<br><small>Binance Coin</small></td>
-          <td id="price-bnb">604.4 USD</td>
-          <td id="change-bnb" class="up">+0.07%</td>
+          <td>
+            <img id="img-binancecoin" class="icon" />
+            BNB<br><small>Binance Coin</small>
+          </td>
+          <td id="price-binancecoin" data-value="0">0.00 USD</td>
+          <td id="percent-binancecoin" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptocompare.com/media/37746251/btc.png" class="icon"> BTC	<br><small>Bitcoin</small></td>
-          <td id="price-btc">604.4 USD</td>
-          <td id="change-btc" class="up">+0.07%</td>
+          <td>
+            <img id="img-bitcoin" class="icon" />
+            BTC<br><small>Bitcoin</small>
+          </td>
+          <td id="price-bitcoin" data-value="0">0.00 USD</td>
+          <td id="percent-bitcoin" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://cryptocompare.com/media/37746238/eth.png" class="icon"> ETH<br><small>Ethereum</small></td>
-          <td id="price-eth">604.4 USD</td>
-          <td id="change-eth" class="up">+0.07%</td>
+          <td>
+            <img id="img-ethereum" class="icon" />
+            ETH<br><small>Ethereum</small>
+          </td>
+          <td id="price-ethereum" data-value="0">0.00 USD</td>
+          <td id="percent-ethereum" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
         <tr>
-          <td><img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="icon"> SOL<br><small>Solana</small></td>
-          <td id="price-sol">604.4 USD</td>
-          <td id="change-sol" class="up">+0.07%</td>
+          <td>
+            <img id="img-solana" class="icon" />
+            SOL<br><small>Solana</small>
+          </td>
+          <td id="price-solana" data-value="0">0.00 USD</td>
+          <td id="percent-solana" class="percent">0.00%</td>
           <td><a href="#">Giao dịch</a></td>
         </tr>
-      </tbody>
+      </tbody>      
     </table>
   </div>
 
@@ -152,10 +190,7 @@
       </ul>
     </div>
   </div>
-</div>
-
-<script src="./market js fe3.js"></script>
-  
+</div>  
 <div class="two-column">
   <div class="card square-wrapper">
     <h3>👥 Square</h3>

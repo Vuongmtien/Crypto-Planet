@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot</title>
+    <link rel="stylesheet" href="./spot.css">
+</head>
+<body>
+    <body>
+        <!-- NAVBAR -->
+        <header class="navbar">
+          <div class="navbar-left">
+            <h2><a href="./FE1.html" style="text-decoration: none; color: rgb(18, 17, 17);">Crypto Planet</a></h2>
+          </div>
+        
+          <nav class="navbar-center">
+            <a href="./market_updated_ids.html">Market</a>
+        
+            <div class="dropdown" id="watchlistDropdown">
+              <a href="./spot.html" class="watchlist-btn" id="watchlistToggle">Watchlist ▼</a>
+              <div class="dropdown-menu" id="watchlistMenu">
+                <div class="dropdown-column">
+                  <h4>Cơ bản</h4>
+                  <a href="spot.html">Spot</a>
+                  <a href="#">Margin</a>
+                  <a href="#">P2P</a>
+                  <a href="#">Chuyển đổi & Giao dịch lô</a>
+                </div>
+                <div class="dropdown-column">
+                  <h4>Nâng cao</h4>
+                  <a href="#">Bot giao dịch</a>
+                  <a href="#">Sao chép giao dịch</a>
+                  <a href="#">API</a>
+                </div>
+              </div>
+            </div>
+            
+        
+            <a href="./FE3_updated.html">Portfolio</a>
+            <a href="./Fe4.html">Learn</a>
+          </nav>
+        
+          <div class="navbar-right">
+            <span>Eng</span>
+            <span>USD</span>
+            <button class="btn signin">Sign In</button>
+            <button class="btn register">Register</button>
+          </div>
+        </header>
+        <div class="layout-wrapper">
+          <div class="content-col">
+            <div class="card full-height">
+              <h2>Watchlist</h2>
+              <p class="update-time">Last updated: just now</p>
+              <table class="watchlist-table">
+                <thead>
+                  <tr>
+                    <th>Coin Name</th>
+                    <th>Coin Price</th>
+                    <th>24%</th>
+                    <th>24h High</th>
+                    <th>24h Low</th>
+                    <th>Chart</th>
+                  </tr>
+                </thead>
+                <tbody id="watchlistBody"> 
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        
+          <div class="sidebar-col">
+            <div class="card full-height">
+              <div class="tabs">
+                <button class="tab active">Exchange Coin</button>
+                <button class="tab">Buy / Sell Coin</button>
+              </div>
+              <!-- rest of exchange box -->
+              <div class="balance-row">
+                <span>$0.00</span>
+                <img src="" class="mini-icon" alt="">
+              </div>
+              
+              <label>Coin</label>
+              <div class="input-row">
+                <input type="number" id="coinAmount" value="1.0" min="0" step="0.01">
+                <select id="coinSelect"></select>
+              </div>
+              
+              <div class="swap-icon">🔁</div>
+              
+              <label>Change</label>
+              <div class="input-row">
+                <input type="text" id="convertedPrice" value="$0.00" readonly>
+                <select disabled><option>USD</option></select>
+              </div>
+              
+              <p class="note">No extra fees:</p>
+              <button class="exchange-btn">Exchange</button>
+              
+        
+            <div id="topGainersList" class="card gainers-box">
+              <div class="tabs">
+                <button class="tab active">Top Gainers</button>
+                <button class="tab">Top Loser</button>
+              </div>
+            
+              <div class="gainer-item">
+                <img src="https://cryptologos.cc/logos/cardano-ada-logo.png?v=025" class="mini-icon">
+                <div class="info">
+                  <strong>Cardano</strong> <span class="tag">ADA</span><br>
+                  <small class="price" data-value="0.693" data-old="$0.693">$0.693</small>
+                </div>
+                <span class="gainer-change change percent-up" data-value="5.81" data-old="+5.81%">+5.81%</span>
+              </div>
+            
+              <div class="gainer-item">
+                <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=025" class="mini-icon">
+                <div class="info">
+                  <strong>Solana</strong> <span class="tag">SOL</span><br>
+                  <small class="price" data-value="145.92" data-old="$145.92">$145.92</small>
+                </div>
+                <span class="gainer-change change percent-up" data-value="5.38" data-old="+5.38%">+5.38%</span>
+              </div>
+            
+              <div class="gainer-item">
+                <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png?v=025" class="mini-icon">
+                <div class="info">
+                  <strong>Dogecoin</strong> <span class="tag">DOGE</span><br>
+                  <small class="price" data-value="0.17" data-old="$0.17">$0.17</small>
+                </div>
+                <span class="gainer-change change percent-up" data-value="6.80" data-old="+6.80%">+6.80%</span>
+              </div>
+            
+              <div class="gainer-item">
+                <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png?v=025" class="mini-icon">
+                <div class="info">
+                  <strong>Ripple</strong> <span class="tag">XRP</span><br>
+                  <small class="price" data-value="2.16" data-old="$2.16">$2.16</small>
+                </div>
+                <span class="gainer-change change percent-up" data-value="2.13" data-old="+2.13%">+2.13%</span>
+              </div>
+            
+              <div class="gainer-item">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=025" class="mini-icon">
+                <div class="info">
+                  <strong>Bitcoin</strong> <span class="tag">BTC</span><br>
+                  <small class="price" data-value="43975.72" data-old="$43,975.72">$43,975.72</small>
+                </div>
+                <span class="gainer-change change percent-up" data-value="2.97" data-old="+2.97%">+2.97%</span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+    <script src="./spot.js"></script> 
+</body>
+</html>

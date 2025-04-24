@@ -1,0 +1,254 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  /* === FIXED NAVBAR CHUẨN GIAO DIỆN === */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #e1e4e9; /* nền xám nhạt */
+    padding: 3px 20px; /* thấp hơn */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .navbar-left {
+    font-size: 14px;       /* nhỏ hơn */
+    font-weight: bold;
+    line-height: 1;        /* sát đỉnh */
+    display: flex;
+    align-items: center;   /* căn giữa theo chiều cao */
+  }
+  
+  .navbar-center a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: bold;
+  }
+  
+  .navbar-center a:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .navbar-right span {
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .navbar-right button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #6366f1;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .learn-hero {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .learn-hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .learn-hero p {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .learn-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  .learn-categories button {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .learn-categories button.active {
+    background: #111827;
+    color: white;
+  }
+
+  .learn-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  
+  .learn-item {
+    width: 100%;
+    max-width: 280px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .learn-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  .learn-item .info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .learn-item h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  .learn-item p {
+    font-size: 14px;
+    color: #555;
+    min-height: 40px; /* ép cùng độ cao mô tả */
+    margin-bottom: 12px;
+  }
+  
+  .learn-item a {
+    margin-top: auto; /* đẩy nút xuống dưới */
+    padding: 6px 12px;
+    background: #111827;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    align-self: flex-start;
+  }
+  
+
+  .learn-detail {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 24px;
+    display: none;
+  }
+  .learn-detail h2 {
+    margin-top: 0;
+  }
+  .learn-detail img {
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 12px;
+  }
+  /* --- Dropdown Watchlist CSS chuẩn đẹp --- */
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Vùng dropdown gốc */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Nút chính Watchlist */
+.watchlist-btn {
+  color: white;
+  padding: 10px 16px;
+  background-color: transparent;;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* Menu xổ xuống */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+/* Hiện menu khi hover */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* Cột trong dropdown */
+.dropdown-column {
+  width: 48%;
+}
+
+.dropdown-column h4 {
+  color: #b3b3b3;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.dropdown-column a {
+  display: block;
+  color: white;
+  padding: 8px 0;
+  text-decoration: none;
+}
+
+.dropdown-column a:hover {
+  color: #165bd3;
+}
+
+.learn-content > .learn-item:nth-last-child(1):nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+/* Hiện menu khi hover */
+.dropdown:hover .dropdown-menu {
+  display: flex !important;
+}
+
+/* Mặc định dropdown ẩn */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2b2b2b;
+  padding: 15px;
+  border-radius: 8px;
+  width: 400px;
+  z-index: 999;
+  justify-content: space-between;
+}

@@ -1,0 +1,635 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+}
+
+/* === FIXED NAVBAR CHUẨN GIAO DIỆN === */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #e1e4e9; /* nền xám nhạt */
+  padding: 3px 20px; /* thấp hơn */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.navbar-left {
+  font-size: 14px;       /* nhỏ hơn */
+  font-weight: bold;
+  line-height: 1;        /* sát đỉnh */
+  display: flex;
+  align-items: center;   /* căn giữa theo chiều cao */
+}
+
+.navbar-center a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 14px;
+  font-weight: bold;
+}
+
+.navbar-center a:hover {
+  text-decoration: underline;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.navbar-right span {
+  color: #000;
+  font-weight: bold;
+}
+
+.navbar-right button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+/* Crypto Market Table Styles */
+.market-section {
+    background: #fff;
+    padding: 60px 0;
+  }
+  
+  .market-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .section-subtitle {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .crypto-table-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .search-box {
+    position: relative;
+    width: 300px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .filter-btn.active {
+    background: #6366F1;
+    color: white;
+  }
+  
+  .scrollable-table {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .market-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .market-table th, 
+  .market-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .market-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .sortable {
+    cursor: pointer;
+  }
+  
+  .sort-icon {
+    font-size: 10px;
+    margin-left: 5px;
+  }
+  
+  .crypto-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .crypto-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .coin-name {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+  }
+  
+  .coin-fullname {
+    color: #777;
+    font-size: 12px;
+  }
+  
+  .price-cell {
+    font-weight: bold;
+  }
+  
+  .percent-up {
+    background-color: rgba(22, 163, 74, 0.15);
+    color: #16a34a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .percent-down {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #dc2626;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .actions-cell {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .action-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .buy-btn {
+    background: #6366F1;
+    color: white;
+  }
+  
+  .star-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .page-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .page-indicator {
+    color: #666;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .table-controls {
+      flex-direction: column;
+      gap: 15px;
+      align-items: stretch;
+    }
+    
+    .search-box {
+      width: 100%;
+    }
+    
+    .market-table th, 
+    .market-table td {
+      padding: 12px 10px;
+    }
+    
+    .actions-cell {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .scrollable-table {
+      overflow-x: auto;
+    }
+    
+    .market-table {
+      min-width: 800px;
+    }
+  }
+  
+  /* Animation for price changes */
+  .price-up {
+    animation: blinkGreen 0.8s ease;
+  }
+  
+  .price-down {
+    animation: blinkRed 0.8s ease;
+  }
+  
+  @keyframes blinkGreen {
+    0% { background-color: rgba(22, 163, 74, 0.3); }
+    100% { background-color: transparent; }
+  }
+  
+  @keyframes blinkRed {
+    0% { background-color: rgba(220, 38, 38, 0.3); }
+    100% { background-color: transparent; }
+  }
+
+/* market */
+/* Crypto Categories Styles */
+.crypto-categories {
+    padding: 30px 0;
+    background-color: #ffffff;
+  }
+  
+  .crypto-categories .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .category-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .category-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #f8f9fc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e8ec;
+  }
+  
+  .card-header h3 {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .more-link {
+    color: #6366F1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .more-link:hover {
+    text-decoration: underline;
+  }
+  
+  .coin-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e8ec;
+  }
+  
+  .coin-item:last-child {
+    border-bottom: none;
+  }
+  
+  .coin-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .coin-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+  
+  .coin-symbol {
+    color: #333333;
+    font-weight: 500;
+  }
+  
+  .coin-price {
+    color: #333333;
+    font-weight: 500;
+  }
+  
+  .coin-change {
+    font-weight: 500;
+    width: 70px;
+    text-align: right;
+  }
+  
+  .coin-change.positive {
+    color: #16a34a;
+  }
+  
+  .coin-change.negative {
+    color: #dc2626;
+  }
+  
+  /* Animations */
+  @keyframes priceFlash {
+    0% { color: #333333; }
+    50% { color: #6366F1; }
+    100% { color: #333333; }
+  }
+  
+  @keyframes headerFlash {
+    0% { color: #222222; }
+    50% { color: #6366F1; }
+    100% { color: #222222; }
+  }
+  
+  .price-flash {
+    animation: priceFlash 0.8s ease;
+  }
+  
+  .header-flash {
+    animation: headerFlash 1s ease;
+  }
+  
+  /* Cursor for clickable category cards */
+  .category-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .category-cards {
+      gap: 15px;
+    }
+    
+    .category-card {
+      min-width: 220px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .category-cards {
+      flex-direction: column;
+    }
+    
+    .category-card {
+      width: 100%;
+    }
+  }
+  .price-up {
+    animation: blinkGreen 0.8s ease;
+  }
+  
+  .price-down {
+    animation: blinkRed 0.8s ease;
+  }
+  
+  @keyframes blinkGreen {
+    0% { background-color: rgba(22, 163, 74, 0.3); }
+    100% { background-color: transparent; }
+  }
+  
+  @keyframes blinkRed {
+    0% { background-color: rgba(220, 38, 38, 0.3); }
+    100% { background-color: transparent; }
+  }
+  .price-up {
+    color: green;
+    transition: all 0.3s ease;
+  }
+  
+  .price-down {
+    color: red;
+    transition: all 0.3s ease;
+  }
+  
+  .percent-up {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .percent-down {
+    color: red;
+    font-weight: bold;
+  }
+  /* === Nhấp nháy khi giá thay đổi === */
+@keyframes flashGreen {
+  0% { background-color: rgba(22, 163, 74, 0.2); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+  0% { background-color: rgba(220, 38, 38, 0.2); }
+  100% { background-color: transparent; }
+}
+
+.price-up {
+  color: #16a34a;
+  animation: flashGreen 0.4s ease;
+  font-weight: bold;
+}
+
+.price-down {
+  color: #dc2626;
+  animation: flashRed 0.4s ease;
+  font-weight: bold;
+}
+
+.percent-up {
+  color: #15803d;
+  font-weight: bold;
+  animation: flashGreen 0.4s ease;
+}
+
+.percent-down {
+  color: #b91c1c;
+  font-weight: bold;
+  animation: flashRed 0.4s ease;
+}
+/* --- Dropdown Watchlist CSS chuẩn đẹp --- */
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Vùng dropdown gốc */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Nút chính Watchlist */
+.watchlist-btn {
+  color: white;
+  padding: 10px 16px;
+  background-color: transparent;;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* Menu xổ xuống */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+/* Hiện menu khi hover */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* Cột trong dropdown */
+.dropdown-column {
+  width: 48%;
+}
+
+.dropdown-column h4 {
+  color: #b3b3b3;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.dropdown-column a {
+  display: block;
+  color: white;
+  padding: 8px 0;
+  text-decoration: none;
+}
+
+.dropdown-column a:hover {
+  color: #165bd3;
+}
+/* Hiện menu khi hover */
+.dropdown:hover .dropdown-menu {
+  display: flex !important;
+}
+
+/* Mặc định dropdown ẩn */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2b2b2b;
+  padding: 15px;
+  border-radius: 8px;
+  width: 400px;
+  z-index: 999;
+  justify-content: space-between;
+}

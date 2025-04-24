@@ -14,6 +14,8 @@ function handleLogin() {
   
       // Lưu người dùng đang đăng nhập
       localStorage.setItem("currentUser", JSON.stringify(storedUser));
+      localStorage.setItem("userEmail", storedUser.email);
+
   
       // Cập nhật giao diện
       updateLoginStatus();
@@ -65,12 +67,16 @@ function handleLogin() {
     switchPopup('sign-up-popup', 'sign-in-popup');
   }
   document.getElementById("logout-btn").addEventListener("click", function () {
-    localStorage.removeItem("currentUser"); // Xoá user
-    document.getElementById("user-email").innerText = ""; // Xoá hiển thị email
-    document.getElementById("logout-btn").style.display = "none"; // Ẩn logout
-    document.querySelector('[data-popup="sign-in-popup"]').style.display = "inline-block"; // Hiện lại Sign In
-    document.querySelector('[data-popup="sign-up-popup"]').style.display = "inline-block"; // Hiện lại Register
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("userEmail");
+  
+    // Cập nhật giao diện về trạng thái chưa đăng nhập
+    document.getElementById("user-email").innerText = "Chưa đăng nhập";
+    document.getElementById("logout-btn").style.display = "none";
+    document.querySelector('[data-popup="sign-in-popup"]').style.display = "inline-block";
+    document.querySelector('[data-popup="sign-up-popup"]').style.display = "inline-block";
   });
+  
   function updatePrice(id, newPrice) {
     const priceEl = document.getElementById(id);
     const currentPrice = parseFloat(priceEl.innerText.replace(/[^\d.]/g, ""));
@@ -120,5 +126,65 @@ function handleLogin() {
   function getRandomPrice(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-         
-    
+  async function fetchMarketData() {
+    const coinGeckoIDs = [
+      "bitcoin", "ethereum", "binancecoin", "solana",
+      "cardano", "dogecoin", "ripple", "tron",
+      "tether", "usd-coin", "avalanche-2"
+    ];
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinGeckoIDs.join(",")}`;
+    const res = await fetch(url);
+    return await res.json();
+  }
+  
+  function updateCoinPriceUI(coinId, price, change) {
+    const priceEl = document.getElementById(`price-${coinId}`);
+    const changeEl = document.getElementById(`change-${coinId}`);
+  
+    if (priceEl) priceEl.textContent = `${price.toLocaleString()} USD`;
+    if (changeEl) {
+      changeEl.textContent = `${change > 0 ? "+" : ""}${change.toFixed(2)}%`;
+      changeEl.classList.remove("up", "down");
+      changeEl.classList.add(change >= 0 ? "up" : "down");
+    }
+  }
+  
+  function updateFE1CardPrice(coinId, price, change) {
+    const card = document.getElementById(`price-${coinId}`);
+    if (card) {
+      card.innerHTML = `$${price.toLocaleString()} <span class="crypto-change ${change >= 0 ? 'positive' : 'negative'}">${change >= 0 ? '+' : ''}${change.toFixed(2)}%</span>`;
+    }
+  }
+  
+  async function updateAllPrices() {
+    const data = await fetchMarketData();
+    data.forEach(coin => {
+      const id = coin.id;
+  
+      // FE3 table
+      updateCoinPriceUI(id, coin.current_price, coin.price_change_percentage_24h);
+  
+      // FE1 cards
+      updateFE1CardPrice(id, coin.current_price, coin.price_change_percentage_24h);
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    updateAllPrices();
+    setInterval(updateAllPrices, 30000); // cập nhật mỗi 30s
+  });
+  
+  // Nếu có currentUser thì update portfolio
+  function updatePortfolioOverview() {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user) {
+      document.getElementById("account-email").innerText = user.email;
+      const total = 25000 + 7000;
+      document.getElementById("total-balance").innerText = `$${total.toLocaleString()}`;
+    }
+  }
+  const email = localStorage.getItem('userEmail');
+  if (email) {
+    document.getElementById('account-email').textContent = email;
+  }          
+  
