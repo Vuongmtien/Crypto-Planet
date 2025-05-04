@@ -470,13 +470,36 @@ body {
   flex-shrink: 0; /* ✅ luôn giữ ở bên phải */
 }
 /* Flash hiệu ứng */
-.price-up {
+/* Giá Coin chỉ in đậm, KHÔNG màu nền */
+.price {
+  font-weight: bold;
+  text-align: right;
+  transition: color 0.3s;
+}
+
+/* % Change: nền màu xanh/đỏ + bo tròn */
+.change {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Tăng giá */
+.percent-up {
+  background-color: #dcfce7;
   color: #16a34a;
 }
-.price-down {
+
+/* Giảm giá */
+.percent-down {
+  background-color: #fee2e2;
   color: #dc2626;
 }
 
+/* Hiệu ứng flash khi giá thay đổi */
 .price-flash {
   animation: flash-glow 0.2s ease-in-out;
 }
@@ -492,25 +515,8 @@ body {
   }
 }
 
-.price-up, .percent-up {
-  color: #16a34a;
-  background-color: #dcfce7;
-  padding: 4px 8px;
-  border-radius: 6px;
-  display: inline-block;
-  font-weight: bold;
-}
-
-.price-down, .percent-down {
-  color: #dc2626;
-  background-color: #fee2e2;
-  padding: 4px 8px;
-  border-radius: 6px;
-  display: inline-block;
-  font-weight: bold;
-}
-
-.price, .change {
-  transition: background-color 0.3s, color 0.3s;
+/* Fix small text in gainer item */
+.gainer-item .info small {
+  white-space: nowrap;
 }
 

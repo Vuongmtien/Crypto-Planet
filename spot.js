@@ -8,19 +8,52 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ===== Global Variables =====
+let currentPrice = 0;
+
 // ===== Fetch Exchange Coin =====
 async function fetchCoinData(coinId = 'bitcoin') {
   try {
     const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`);
     const data = await res.json();
-    const price = data.market_data.current_price.usd;
-    const image = data.image.small;
+    currentPrice = data.market_data.current_price.usd;
 
-    document.querySelector('.balance-row span').textContent = `$${price.toLocaleString()}`;
-    document.querySelector('.balance-row img').src = image;
+    document.querySelector('.balance-row span').textContent = `$${currentPrice.toLocaleString()}`;
+    document.querySelector('.balance-row img').src = data.image.small;
     document.querySelector('.balance-row img').alt = coinId.toUpperCase();
+
+    updateConvertedPrice();
   } catch (err) {
-    console.error("Coin data fetch error:", err);
+    console.error("Coin fetch error:", err);
+  }
+}
+
+// ===== Update Converted Price =====
+function updateConvertedPrice() {
+  const amount = parseFloat(document.getElementById("coinAmount").value);
+  const result = isNaN(amount) ? 0 : amount * currentPrice;
+  document.getElementById("convertedPrice").value = `$${result.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+}
+
+// ===== Populate Coin Dropdown =====
+async function populateCoinDropdown() {
+  try {
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
+    const coins = await res.json();
+
+    const select = document.getElementById("coinSelect");
+    select.innerHTML = "";
+
+    coins.slice(0, 20).forEach((coin) => {
+      const option = document.createElement("option");
+      option.value = coin.id;
+      option.textContent = coin.symbol.toUpperCase();
+      select.appendChild(option);
+    });
+
+    fetchCoinData(select.value);
+  } catch (err) {
+    console.error("Dropdown load error:", err);
   }
 }
 
@@ -38,70 +71,73 @@ async function fetchMarketData() {
 
 // ===== Update Watchlist =====
 function updateWatchlist(coins) {
-  const tbody = document.getElementById("watchlistBody");
-
-  coins.forEach((coin) => {
-    const rowId = `row-${coin.id}`;
-    let row = document.getElementById(rowId);
-    const price = `$${coin.current_price.toLocaleString()}`;
-    const change = coin.price_change_percentage_24h.toFixed(2);
-    const changeText = `${change >= 0 ? "+" : ""}${change}%`;
-    const priceClass = change >= 0 ? "percent-up" : "percent-down";
-
-    if (!row) {
-      row = document.createElement("tr");
-      row.id = rowId;
-      row.innerHTML = `
-        <td><img src="${coin.image}" class="icon"> ${coin.name} <span class="tag">${coin.symbol.toUpperCase()}</span></td>
-        <td class="price" data-value="${coin.current_price}">${price}</td>
-        <td class="change ${priceClass}" data-value="${change}">${changeText}</td>
-        <td>$${coin.high_24h.toLocaleString()}</td>
-        <td>$${coin.low_24h.toLocaleString()}</td>
-        <td><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Line_chart.svg" class="chart-preview"></td>
-      `;
-      tbody.appendChild(row);
-    } else {
-      const priceEl = row.querySelector(".price");
-      const changeEl = row.querySelector(".change");
-
-      const oldPrice = parseFloat(priceEl.dataset.value);
-      const newPrice = coin.current_price;
-      if (newPrice !== oldPrice) {
+    const tbody = document.getElementById("watchlistBody");
+  
+    coins.forEach((coin) => {
+      const rowId = `row-${coin.id}`;
+      let row = document.getElementById(rowId);
+  
+      const price = `$${coin.current_price.toLocaleString()}`;
+      const change = coin.price_change_percentage_24h.toFixed(2);
+      const changeText = `${change >= 0 ? "+" : ""}${change}%`;
+      const priceClass = change >= 0 ? "percent-up" : "percent-down";
+  
+      if (!row) {
+        row = document.createElement("tr");
+        row.id = rowId;
+        row.innerHTML = `
+          <td>
+            <div class="flex items-center gap-2">
+              <img src="${coin.image}" class="icon">
+              ${coin.name} <span class="tag">${coin.symbol.toUpperCase()}</span>
+            </div>
+          </td>
+          <td class="price text-right" data-value="${coin.current_price}">
+            ${price}
+          </td>
+          <td class="change ${priceClass} text-center" data-value="${change}">
+            ${changeText}
+          </td>
+          <td class="text-right">
+            $${coin.high_24h.toLocaleString()}
+          </td>
+          <td class="text-right">
+            $${coin.low_24h.toLocaleString()}
+          </td>
+          <td class="text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Line_chart.svg" class="chart-preview">
+          </td>
+        `;
+        tbody.appendChild(row);
+      } else {
+        const priceEl = row.querySelector(".price");
+        const changeEl = row.querySelector(".change");
+  
+        const oldPrice = parseFloat(priceEl.dataset.value);
+        const newPrice = coin.current_price;
         if (newPrice !== oldPrice) {
-          priceEl.classList.remove("price-up", "price-down", "price-flash");
-          void priceEl.offsetWidth;
-          const className = newPrice > oldPrice ? "price-up" : "price-down";
-          priceEl.classList.add(className, "price-flash");
-          priceEl.textContent = price;
+          priceEl.textContent = `$${newPrice.toLocaleString()}`;
           priceEl.dataset.value = newPrice;
-        }        
-      
-        const className = newPrice > oldPrice ? "price-up" : "price-down"; // xác định màu mới
-        priceEl.classList.add(className); // thêm màu tương ứng
-        flash(priceEl); // gọi hiệu ứng nhấp nháy
+          priceEl.classList.remove("price-up", "price-down");
+          const className = newPrice > oldPrice ? "price-up" : "price-down";
+          priceEl.classList.add(className);
+          flash(priceEl);
+        }
+  
+        const oldChange = parseFloat(changeEl.dataset.value);
+        const newChange = coin.price_change_percentage_24h;
+        if (newChange !== oldChange) {
+          changeEl.textContent = `${newChange >= 0 ? "+" : ""}${newChange.toFixed(2)}%`;
+          changeEl.dataset.value = newChange;
+          changeEl.classList.remove("price-up", "price-down");
+          const changeClass = newChange >= 0 ? "percent-up" : "percent-down";
+          changeEl.classList.add(changeClass);
+          flash(changeEl);
+        }
       }
-      
-      const oldChange = parseFloat(changeEl.dataset.value);
-      if (newChange !== oldChange) {
-        changeEl.classList.remove("price-up", "price-down", "price-flash");
-        void changeEl.offsetWidth;
-        const changeClass = newChange >= 0 ? "price-up" : "price-down";
-        changeEl.classList.add(changeClass, "price-flash");
-        changeEl.textContent = changeText;
-        changeEl.dataset.value = newChange;
-      }
-      
-      
-    }
-  });
-}
-function flash(el) {
-  el.classList.remove("price-flash");
-  void el.offsetWidth; // ép browser reflow
-  el.classList.add("price-flash");
-  setTimeout(() => el.classList.remove("price-flash"), 200);
-}
-
+    });
+  }
+  
 
 // ===== Update Top Gainers =====
 function updateTopGainers(coins) {
@@ -123,7 +159,7 @@ function updateTopGainers(coins) {
           <strong>${coin.name}</strong> <span class="tag">${coin.symbol.toUpperCase()}</span><br>
           <small class="price" data-value="${coin.current_price}">$${coin.current_price.toLocaleString()}</small>
         </div>
-        <span class="gainer-change change ${coin.price_change_percentage_24h >= 0 ? 'percent-up' : 'percent-down'}" data-value="${coin.price_change_percentage_24h.toFixed(2)}">
+        <span class="gainer-change change ${coin.price_change_percentage_24h >= 0 ? 'percent-up' : 'percent-down'}">
           ${coin.price_change_percentage_24h.toFixed(2)}%
         </span>
       </div>
@@ -141,57 +177,8 @@ function flash(el) {
 
 // ===== Auto Fetch Loop =====
 window.addEventListener("load", () => {
-  fetchCoinData("bitcoin");
-  fetchMarketData();
-  setInterval(fetchMarketData, 1000); // ⏱ mỗi 1 giây gọi lại API
-});
-let currentPrice = 0;
-
-async function fetchCoinData(coinId = 'bitcoin') {
-  try {
-    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`);
-    const data = await res.json();
-    currentPrice = data.market_data.current_price.usd;
-
-    document.querySelector('.balance-row span').textContent = `$${currentPrice.toLocaleString()}`;
-    document.querySelector('.balance-row img').src = data.image.small;
-    document.querySelector('.balance-row img').alt = coinId.toUpperCase();
-
-    updateConvertedPrice();
-  } catch (err) {
-    console.error("Coin fetch error:", err);
-  }
-}
-
-function updateConvertedPrice() {
-  const amount = parseFloat(document.getElementById("coinAmount").value);
-  const result = isNaN(amount) ? 0 : amount * currentPrice;
-  document.getElementById("convertedPrice").value = `$${result.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-}
-
-async function populateCoinDropdown() {
-  try {
-    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
-    const coins = await res.json();
-
-    const select = document.getElementById("coinSelect");
-    select.innerHTML = "";
-
-    coins.slice(0, 20).forEach((coin) => {
-      const option = document.createElement("option");
-      option.value = coin.id;
-      option.textContent = coin.symbol.toUpperCase();
-      select.appendChild(option);
-    });
-
-    fetchCoinData(select.value); // chọn giá coin đầu tiên
-  } catch (err) {
-    console.error("Dropdown load error:", err);
-  }
-}
-
-window.addEventListener("load", () => {
   populateCoinDropdown();
+  fetchCoinData("bitcoin");
   fetchMarketData();
   setInterval(fetchMarketData, 1000);
 

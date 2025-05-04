@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Crypto Planet</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body class="admin-dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">Crypto Planet</div>
+      <nav class="menu">
+        <a href="#">Dashboard</a>
+        <a href="#">Crypto Wallet</a>
+        <a href="#">Buy & Sell</a>
+        <a href="#">Trader Profile</a>
+        <a href="#">Crypto Stats</a>
+        <a href="#">Transactions</a>
+        <a href="#">Charts</a>
+      </nav>
+    </aside>
+  
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <input type="text" placeholder="Search..." class="search-bar">
+      <div class="icons">
+        <span class="icon">🔔</span>
+        <img src="avatar.jpg" alt="Admin" class="avatar">
+      </div>
+    </header>
+
+    <!-- Users section -->
+    <section class="users-section">
+      <h2>Danh sách Users</h2>
+
+      <!-- Form thêm user -->
+      <form id="addUserForm" class="form-inline">
+        <input type="text" id="name" placeholder="Tên người dùng" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <button type="submit">➕ Thêm User</button>
+      </form>
+
+      <!-- Tìm kiếm -->
+      <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm theo tên..." />
+
+      <!-- Bảng user -->
+      <table id="userTable">
+        <div class="pagination">
+          <button onclick="prevPage()">« Trước</button>
+          <span id="pageIndicator">Trang 1</span>
+          <button onclick="nextPage()">Sau »</button>
+        </div>        
+        <thead>
+          <tr>
+            <th>Ảnh</th>
+            <th onclick="sortTable('id')" style="cursor: pointer;">ID 🔽</th>
+            <th onclick="sortTable('username')" style="cursor: pointer;">Tên 🔽</th>
+            <th onclick="sortTable('email')" style="cursor: pointer;">Email 🔽</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Dashboard Overview Cards -->
+    <section class="overview">
+      <div class="card">Total Income: $14,025</div>
+      <div class="card">Sessions: 2025</div>
+      <div class="card">Ethereum Wallet: 8025</div>
+      <div class="card">Number of Clients: 5645</div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="chart">
+      <h3>Crypto Trend Overview</h3>
+      <canvas id="cryptoChart"></canvas>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+      <h3>Your Portfolio</h3>
+      <div class="portfolio-item">Bitcoin - 0.000242 BTC</div>
+      <div class="portfolio-item">Litecoin - 0.000242 LTC</div>
+      <div class="portfolio-item">Ripple - 0.000242 XRP</div>
+    </section>
+
+  </div>
+  <!-- Popup sửa user -->
+<div id="editPopup" class="popup-overlay">
+  <div class="popup">
+    <h3>Sửa người dùng</h3>
+    <form id="editUserForm">
+      <input type="text" id="editName" placeholder="Tên mới" required />
+      <input type="email" id="editEmail" placeholder="Email mới" required />
+      <input type="text" id="editAvatar" placeholder="Avatar URL" />
+      <div class="popup-actions">
+        <button type="submit">💾 Lưu</button>
+        <button type="button" onclick="closePopup()">❌ Hủy</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <script src="admin.js"></script>
+</body>
+</html>
